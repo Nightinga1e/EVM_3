@@ -7,9 +7,9 @@ int sc_register;
 
 int sc_memoryInit() {
     for (int i = 0; i < SC_MEM_SIZE; ++i) {
-        sc_memory[i] = 0;
+        sc_memory[i] = i+1;
     }
-    printf("\n *Memory init*  \n");
+    // printf("\n *Memory init*  \n");
     return 0;
 }
 
@@ -20,7 +20,7 @@ int sc_memorySet(int address, int value) {
         return 1;
     }
     sc_memory[address] = value;
-    printf("\n *Memory set* \n");
+    // printf("\n *Memory set* \n");
     return 0;
 }
 
@@ -31,7 +31,7 @@ int sc_memoryGet(int address, int *value) {
         return 1;
     }
     *value = sc_memory[address];
-    printf("\n *Memory get* \n");
+    //printf("\n *Memory get* \n");
     return 0;
 }
 
@@ -43,7 +43,7 @@ int sc_memorySave(char filename[]) {
     }
     fwrite(&sc_memory, sizeof(sc_memory), 1, fp);
     fclose(fp);
-    printf("\n *Memory save* \n");
+    //printf("\n *Memory save* \n");
     return 0;
 }
 
@@ -55,13 +55,13 @@ int sc_memoryLoad(char filename[]) {
     }
     fread(&sc_memory, sizeof(sc_memory), 1, fp);
     fclose(fp);
-    printf("\n *Memory load* \n");
+    //printf("\n *Memory load* \n");
     return 0;
 }
 
 int sc_regInit() {
     sc_register = 0x0;
-    printf("\n *Reg init* \n");
+    // printf("\n *Reg init* \n");
     return 0;
 }
 
@@ -79,7 +79,7 @@ int sc_regSet(int reg, int value) {
     }else{
 	Er_Handler(5);
 	}
-    printf("\n *reg set* \n");
+    //printf("\n *reg set* \n");
     return 0;
 }
 
@@ -90,7 +90,7 @@ int sc_regGet(int reg, int *value) {
         return 1;
     }
     *value = (sc_register >> (reg - 1)) & 0x1;
-    printf("\n *Reg get* \n");
+    //printf("\n *Reg get* \n");
     return 0;
 }
 
@@ -112,7 +112,7 @@ int sc_commandEncode(int command, int operand, int *value) {
         return 1;
     }
     *value = (command << 7) | operand;
-    	printf("\n *Command encode* \n");
+    //	printf("\n *Command encode* \n");
     return 0;
 }
 
@@ -143,7 +143,7 @@ int sc_commandDecode(int value, int *command, int *operand) {
 	Er_Handler(7);
         return 1;
     }
-    printf("\n *Command decode* \n");
+    //printf("\n *Command decode* \n");
     return 0;
 }
 

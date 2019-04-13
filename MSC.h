@@ -7,6 +7,7 @@
 #define INVALID_REG   0b00000010
 #define WRONG_COMMAND 0b00000100
 
+int sc_memory[SC_MEM_SIZE];
 
 int sc_memoryInit();
 

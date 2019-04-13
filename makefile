@@ -1,6 +1,7 @@
 #pragma once
 all:
-	gcc -c mTmain.c -o mTmain.o
+	gcc -c main.c -o main.o
 	gcc -c myTerm.c -o myTerm.o
-	gcc mTmain.o myTerm.o -o output
+	gcc -c MSC.c -o MSC.o
+	gcc main.o myTerm.o MSC.o -o output
 	./output
